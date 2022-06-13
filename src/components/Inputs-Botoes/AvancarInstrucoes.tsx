@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IEstacaoReserva, IInstrucoes, IntrucaoContext, IRegistrador } from '../../App';
 import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
-
 const AvancarInstrucoes: React.FC = () => {
     const arrInstrucoesConfirmadas = useRef<IInstrucoes[]>([]);
     const {
@@ -19,7 +18,7 @@ const AvancarInstrucoes: React.FC = () => {
     } = useContext(IntrucaoContext);
 
     const avancarInstrucoes = () => {
-        
+
         const instrucaoAtual = arrInstrucoesConfirmadas.current.shift();
         let estacaoReservaVazia: IEstacaoReserva | undefined = undefined;
 
@@ -199,8 +198,6 @@ const AvancarInstrucoes: React.FC = () => {
             }
         }
 
-
-
         arrInstrucoes.setValue([...arrInstrucoes.value.map(i => {
             const instER = arrAuxER.find(e => e.idInstrucao === i.id);
             if (!i.enviada && arrBufferAux.find(b => b.idInstrucao === i.id)) {
@@ -243,20 +240,20 @@ const AvancarInstrucoes: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(onStart, [confirmado, cicloAtual])
 
-
     return (
         <Wrapper>
-            <div
-                color={confirmado ? 'processing' : 'default'}
-            >
-                Ciclo: {cicloAtual}
-            </div>
             <button
+                className='myButton'
                 onClick={avancarInstrucoes}
                 disabled={!confirmado}
             >
                 Avançar
             </button>
+            <div
+                className='ciclo'
+            >
+                CICLO - {cicloAtual}
+            </div>
         </Wrapper >
     );
 }
@@ -264,7 +261,44 @@ const AvancarInstrucoes: React.FC = () => {
 export default AvancarInstrucoes;
 
 const Wrapper = styled.div`
-	.ciclo-atual-label{
-        margin-right: 10px;
+    display: flex;
+	flex-direction: row;
+	flex: 1;
+    align-items: center;
+	justify-content: flex-start;
+    text-align: center;
+    margin-left: 15px;
+
+    .ciclo {
+        display: flex;
+	    flex: 1;
+        font-family: impact;
+        font-size: 30px;
+        color: #dfdfdf;
+    }
+    .myButton {
+        box-shadow: inset 0px 1px 0px 0px #ffffff;
+        background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+        background-color: #ededed;
+        border-radius: 6px;
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+        cursor: pointer;
+        color: #777777;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffffff;
+        margin-right: 15px;
+    }
+    .myButton:hover{
+	    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	    background-color: #dfdfdf;
+    }
+    .myButton:active{
+	    position: relative;
+	    top: 1px;
     }
 `;

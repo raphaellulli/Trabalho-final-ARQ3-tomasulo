@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import InstrucoesTotais from '../../components/InstrucoesTotais';
-import CiclosPorInstrucao from '../../components/CiclosPorInstrucao';
-import QuantidadeTipoRegistrador from '../../components/QuantidadeTipoRegistrador';
+import InstrucoesTotais from '../../components/TabelasRight/InstrucoesTotais';
+import CiclosPorInstrucao from '../../components/TabelasRight/CiclosPorInstrucao';
+import QuantidadeTipoRegistrador from '../../components/TabelasRight/QuantidadeTipoRegistrador';
 
 const RightScreen: React.FC = () => {
 

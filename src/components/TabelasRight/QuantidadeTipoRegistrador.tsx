@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { IEstacaoReserva, IntrucaoContext } from '../App';
-import { TipoRegistrador } from '../Enums/TipoRegistrador';
+import { IEstacaoReserva, IntrucaoContext } from '../../App';
+import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
 interface IProps {
 }

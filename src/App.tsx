@@ -5,8 +5,9 @@ import { TipoInstrucao } from './Enums/TipoInstrucao';
 import { TipoRegistrador } from './Enums/TipoRegistrador';
 import RightScreen from './screen/RightScreen/RightScreen';
 import LeftScreen from './screen/LeftScreen/LeftScreen';
-import BotoesConfimarResetar from './components/BotoesConfimarResetar';
-import InputInstrucoes from './components/InputInstrucoes';
+import BotoesConfimarResetar from './components/Inputs-Botoes/BotoesConfimarResetar';
+import InputInstrucoes from './components/Inputs-Botoes/InputInstrucoes';
+import AvancarInstrucoes from './components/Inputs-Botoes/AvancarInstrucoes';
 
 export interface IInstrucoes {
 	id: string;
@@ -118,13 +119,15 @@ function App() {
 			<WrapperSiderContent>
 				<div className='parte-topo'>
 					<BotoesConfimarResetar />
+					<div className='linha'></div>
+					<AvancarInstrucoes />
 					<InputInstrucoes />
 				</div>
 				<div className='parte-baixo'>
-					<div className='parte-direita'>
+					<div className='parte-esquerda'>
 						<LeftScreen />
 					</div>
-					<div className='parte-esquerda'>
+					<div className='parte-direita'>
 						<RightScreen />
 					</div>
 				</div>
@@ -141,26 +144,31 @@ const WrapperSiderContent = styled.div`
 	flex-direction: column;
 	flex: 1;
 	height: 99vh;
+	
+	.linha{
+		border-right-width: 2px;
+        border-right-style: solid;
+		border-right-color: white;
+	}
 
 	.parte-topo{
 		display: flex;
 		flex-direction: row;
 		background-color: #777777;
 		padding: 20px;
-		justify-content: space-between;
 	}
 	.parte-baixo{
 		display: flex;
 		flex: 1;
 		flex-direction: row;
 	}
-	.parte-esquerda{
-		width: 30%;
+	.parte-direita{
+		width: 35%;
 		height: 100%;
 		background-color: #CCCCCC;
 	}
-	.parte-direita{
-		width: 70%;
+	.parte-esquerda{
+		width: 65%;
 		height: 100%;
 		background-color: #d3d3d3;
 	}

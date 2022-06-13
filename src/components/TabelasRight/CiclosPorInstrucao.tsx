@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { IntrucaoContext } from '../App';
-import { TipoInstrucao } from '../Enums/TipoInstrucao';
+import { IntrucaoContext } from '../../App';
+import { TipoInstrucao } from '../../Enums/TipoInstrucao';
 
 interface IProps {
 }

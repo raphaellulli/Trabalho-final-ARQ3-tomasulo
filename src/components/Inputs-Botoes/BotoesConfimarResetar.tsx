@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { IntrucaoContext } from '../App';
-import { TipoInstrucao } from '../Enums/TipoInstrucao';
-import { TipoRegistrador } from '../Enums/TipoRegistrador';
-
-
+import { IntrucaoContext } from '../../App';
+import { TipoInstrucao } from '../../Enums/TipoInstrucao';
+import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
 const BotoesConfimarResetar: React.FC = () => {
 
@@ -15,9 +13,8 @@ const BotoesConfimarResetar: React.FC = () => {
         arrRegistrador,
         setQuantidadeInstrucoes,
         arrEstacaoReserva,
-        confirmado, setConfirmado,
+        setConfirmado,
         setCicloAtual,
-        cicloAtual,
         arrBufferReordenamento,
     } = useContext(IntrucaoContext);
 
@@ -32,7 +29,7 @@ const BotoesConfimarResetar: React.FC = () => {
                 ehValido = false;
                 alert(`'Instrução ${ind + 1}' ${i.nome} deve ter 3 entradas (entrada1 e entrada2 e entrada3)`);
             }
-            
+
         })
         if (!ehValido)
             return;
@@ -102,7 +99,8 @@ const BotoesConfimarResetar: React.FC = () => {
             <div className='Wrapper-bottoes'>
                 <div>
                     <button
-                        style={{ marginRight: '10px' }}
+                        className='myButton'
+                        style={{ marginRight: '15px' }}
                         onClick={() => onCliqueConfirmar()}
                     >
                         Confirmar
@@ -110,6 +108,7 @@ const BotoesConfimarResetar: React.FC = () => {
                 </div>
                 <div>
                     <button
+                        className='myButton'
                         onClick={() => onCliqueResetar()}
                     >
                         Resetar
@@ -123,12 +122,34 @@ const BotoesConfimarResetar: React.FC = () => {
 export default BotoesConfimarResetar;
 
 const Wrapper = styled.div`
-    bottom: 20px;
-    -webkit-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    -moz-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
     .Wrapper-bottoes{
         display: flex;
         flex-direction: row;
+        margin-right: 15px;
+    }
+
+    .myButton {
+        box-shadow: inset 0px 1px 0px 0px #ffffff;
+        background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+        background-color: #ededed;
+        border-radius: 6px;
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+        cursor: pointer;
+        color: #777777;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffffff;
+    }
+    .myButton:hover{
+	    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	    background-color: #dfdfdf;
+    }
+    .myButton:active{
+	    position: relative;
+	    top: 1px;
     }
 `;

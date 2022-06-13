@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { IntrucaoContext } from '../App';
-import InputInstrucao from './InputInstrucao';
+import { IntrucaoContext } from '../../App';
+import InputInstrucao from '../Inputs-Botoes/InputInstrucao';
 
 const InstrucoesTotais: React.FC = () => {
 

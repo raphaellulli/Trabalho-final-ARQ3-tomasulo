@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { IntrucaoContext } from '../App';
-import { TipoInstrucao } from '../Enums/TipoInstrucao';
+import { IntrucaoContext } from '../../App';
+import { TipoInstrucao } from '../../Enums/TipoInstrucao';
 
 interface IProps {
     index: number;
@@ -65,10 +65,10 @@ const InputInstrucao: React.FC<IProps> = ({
     return (
         <Wrapper>
             <label style={{ marginRight: '12px' }}>
-                Instr{index + 1}
+                Instrução - {index + 1}
             </label>
             <select
-                style={{ width: '75px', marginRight: '2px' }}
+                style={{ width: '75px', marginRight: '2px', padding: '4px' }}
                 value={arrInstrucoes.value[index]?.nome ?? TipoInstrucao.Add}
                 defaultValue={arrInstrucoes.value[index]?.nome ?? TipoInstrucao.Add}
                 onChange={(valor) => { AssociarInstrucao(valor.target.value, 4) }}
@@ -120,8 +120,10 @@ const Wrapper = styled.div`
 	justify-content: center;
     margin: 2px;
     width: 100%;
+
     input{
         width: 100px;
         margin-right: 2px;
+        padding: 4px;
     }
 `;
