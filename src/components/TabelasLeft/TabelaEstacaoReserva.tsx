@@ -8,86 +8,64 @@ const TabelaEstacaoReserva: React.FC = () => {
     } = useContext(IntrucaoContext);
 
     return (
-        <Wrapper
-            title='Estação de Reserva'
-        >
-
-            <STabela>
-                <thead>
-                    <tr>
-                        <th>Ciclos</th>
-                        <th>Nome</th>
-                        <th>Ocupada</th>
-                        <th>Operação</th>
-                        <th>Vj</th>
-                        <th>Vk</th>
-                        <th>Qj</th>
-                        <th>Qk</th>
-                        <th>A</th>
-                        <th>Destino</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        (arrEstacaoReserva && arrEstacaoReserva.value && arrEstacaoReserva.value.length)
-                            ? arrEstacaoReserva.value.sort((a, b) => a.nome.localeCompare(b.nome)).map((estacaoReserva, ind) =>
-                                <tr key={"tr-estacao-reserva" + ind}>
-                                    <td>{estacaoReserva.Ciclos !== undefined ? estacaoReserva.Ciclos.toString() : ''}</td>
-                                    <td>{estacaoReserva.nome}</td>
-                                    <td>{estacaoReserva.ocupada ? 'X' : ''}</td>
-                                    <td>{estacaoReserva.operacao}</td>
-                                    <td>{estacaoReserva.Vj}</td>
-                                    <td>{estacaoReserva.Vk}</td>
-                                    <td>{estacaoReserva.Qj}</td>
-                                    <td>{estacaoReserva.Qk}</td>
-                                    <td>{estacaoReserva.A}</td>
-                                    <td>{estacaoReserva.destino}</td>
-                                </tr>
-                            )
-                            :
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                    }
-                </tbody>
-            </STabela>
-        </Wrapper >
+        <Tablea>
+            <thead>
+                <tr>
+                    <Superior>Ciclos</Superior>
+                    <Superior>Nome</Superior>
+                    <Superior>Ocupada</Superior>
+                    <Superior>Operação</Superior>
+                    <Superior>Vj</Superior>
+                    <Superior>Vk</Superior>
+                    <Superior>Qj</Superior>
+                    <Superior>Qk</Superior>
+                    <Superior>A</Superior>
+                    <Superior>Destino</Superior>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    (arrEstacaoReserva && arrEstacaoReserva.value && arrEstacaoReserva.value.length)
+                    && arrEstacaoReserva.value.sort((a, b) => a.nome.localeCompare(b.nome)).map((estacaoReserva, ind) =>
+                        <tr key={"tr-estacao-reserva" + ind}>
+                            <Inferior>{estacaoReserva.Ciclos !== undefined ? estacaoReserva.Ciclos.toString() : ''}</Inferior>
+                            <Inferior>{estacaoReserva.nome}</Inferior>
+                            <Inferior>{estacaoReserva.ocupada ? 'X' : ''}</Inferior>
+                            <Inferior>{estacaoReserva.operacao}</Inferior>
+                            <Inferior>{estacaoReserva.Vj}</Inferior>
+                            <Inferior>{estacaoReserva.Vk}</Inferior>
+                            <Inferior>{estacaoReserva.Qj}</Inferior>
+                            <Inferior>{estacaoReserva.Qk}</Inferior>
+                            <Inferior>{estacaoReserva.A}</Inferior>
+                            <Inferior>{estacaoReserva.destino}</Inferior>
+                        </tr>
+                    )
+                }
+            </tbody>
+        </Tablea>
     );
 }
 
 export default TabelaEstacaoReserva;
 
-const Wrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-    height: fit-content;
-    max-height: 60vh;
-    
-    -webkit-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    -moz-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
+const Tablea = styled.table`
+	border: 2px solid #777777;
 `;
 
-
-const STabela = styled.table`
-	border: 1px solid black;
-
-	th{
-		border: 1px solid gray;
-		padding: 10px;
-	}
-	td { 
-		border: 1px solid gray;
-		padding: 10px;
-	}
+const Superior = styled.th`
+    border: 2px solid #777777;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
 `;
 
+const Inferior = styled.td`
+    border: 2px solid #777777;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 3px 10px 3px;
+`;

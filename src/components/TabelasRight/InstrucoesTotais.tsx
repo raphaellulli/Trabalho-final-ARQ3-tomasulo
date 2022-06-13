@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { IntrucaoContext } from '../../App';
 import InputInstrucao from '../Inputs-Botoes/InputInstrucao';
 
@@ -16,13 +17,16 @@ const InstrucoesTotais: React.FC = () => {
     }
 
     return (
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-            {
-                GerarCampoInstrucoes()
-            }
-
-        </div>
+        <Wrapper>
+            {GerarCampoInstrucoes()}
+        </Wrapper>
     );
 }
 
 export default InstrucoesTotais;
+
+const Wrapper = styled.div`
+    width: 100%; 
+    display: flex; 
+    flex-direction: column;
+`;

@@ -9,8 +9,10 @@ const LeftScreen: React.FC = () => {
     return (
         <Wrapper>
             <TabelaRegistradores />
-            <TabelaReordenamento />
-            <TabelaEstacaoReserva />
+            <WrapperInferior>
+                <TabelaEstacaoReserva />
+                <TabelaReordenamento />
+            </WrapperInferior>
         </Wrapper >
     );
 }
@@ -20,9 +22,12 @@ export default LeftScreen;
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
     height: 100%;
-    position: relative;
+`;
 
+const WrapperInferior = styled.div`
+    display: flex;
+	flex-direction: row;
+    margin-top: 50px;
+    justify-content: space-around;
 `;

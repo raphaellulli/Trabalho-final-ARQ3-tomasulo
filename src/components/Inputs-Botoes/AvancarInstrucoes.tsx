@@ -23,7 +23,7 @@ const AvancarInstrucoes: React.FC = () => {
         let estacaoReservaVazia: IEstacaoReserva | undefined = undefined;
 
         if (!instrucaoAtual && arrInstrucoes.value.every(i => i.escrita === true) && arrEstacaoReserva.value.every(e => e.ocupada === false)) {
-            alert("Fim do ciclo!");
+            alert("Ciclos finalizados!");
             return;
         }
         const arrBufferAux = arrBufferReordenamento.value;

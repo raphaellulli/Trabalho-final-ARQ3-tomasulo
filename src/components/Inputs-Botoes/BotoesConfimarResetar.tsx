@@ -122,6 +122,10 @@ const BotoesConfimarResetar: React.FC = () => {
 export default BotoesConfimarResetar;
 
 const Wrapper = styled.div`
+    display: flex;  
+    align-items: center;
+    margin-left: 20px;
+
     .Wrapper-bottoes{
         display: flex;
         flex-direction: row;

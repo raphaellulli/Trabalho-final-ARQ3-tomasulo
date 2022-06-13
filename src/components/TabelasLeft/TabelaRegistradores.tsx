@@ -2,69 +2,58 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { IntrucaoContext } from '../../App';
 
-
 const TabelaRegistradores: React.FC = () => {
     const {
         arrRegistrador,
     } = useContext(IntrucaoContext);
 
     return (
-        <Wrapper
-            title='Registradores'
-        >
-            <STabela>
-                <thead>
-                    <tr>
-                        {
-                            (arrRegistrador && arrRegistrador.value && arrRegistrador.value.length)
-                                ? arrRegistrador.value.map(registrador =>
-                                    <th>{registrador.nome}</th>
-                                )
-                                :
-                                <th>--</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        {
-                            (arrRegistrador && arrRegistrador.value && arrRegistrador.value.length)
-                                ? arrRegistrador.value.map(registrador =>
-                                    <td>{registrador.valor}</td>
-                                )
-                                :
-                                <td>--</td>
-                        }
-                    </tr>
-                </tbody>
-            </STabela>
-        </Wrapper>
+        <Tabela>
+            <thead>
+                <tr>
+                    {
+                        (arrRegistrador && arrRegistrador.value && arrRegistrador.value.length)
+                        && arrRegistrador.value.map(registrador =>
+                            <Superior>{registrador.nome}</Superior>
+                        )
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {
+                        (arrRegistrador && arrRegistrador.value && arrRegistrador.value.length)
+                        && arrRegistrador.value.map(registrador =>
+                            <Inferior>{registrador.valor}</Inferior>
+                        )
+                    }
+                </tr>
+            </tbody>
+        </Tabela>
     );
 }
 
 export default TabelaRegistradores;
 
-const Wrapper = styled.div`
-	display: flex;
+const Tabela = styled.table`
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;    
-    margin-top: 10px;
-    -webkit-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    -moz-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
+    border: 2px solid #777777;
 `;
 
-
-const STabela = styled.table`
-	border: 1px solid black;
-	th{
-		border: 1px solid gray;
-		padding: 10px;
-	}
-	td { 
-		border: 1px solid gray;
-		padding: 10px;
-	}
+const Superior = styled.th`
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+	border: 2px solid #777777;
+	padding: 10px;
 `;
 
+const Inferior = styled.th`
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+	border: 2px solid #777777;
+	padding: 15px;
+`;

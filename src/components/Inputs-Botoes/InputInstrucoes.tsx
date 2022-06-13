@@ -10,9 +10,7 @@ const InputInstrucoes: React.FC = () => {
     } = useContext(IntrucaoContext);
 
     return (
-        <Wrapper
-            title='Quantidade de instruções'
-        >
+        <Wrapper>
             <div
                 className='qtd-instrucoes-wrapper'
             >
@@ -23,11 +21,11 @@ const InputInstrucoes: React.FC = () => {
                     >
                         -
                     </button>
-                    <input
-                        type={'number'}
-                        value={quantidadeInstrucoes}
-                        onChange={(e) => { if (Number(e.target.value) <= 0) return; setQuantidadeInstrucoes(Number(e.target.value)) }}
-                    />
+                    <label
+                        className='numeroInstrucoes'
+                    >
+                        {quantidadeInstrucoes}
+                    </label>
                     <button
                         className='myButtonRight'
                         onClick={() => setQuantidadeInstrucoes(quantidadeInstrucoes + 1)}
@@ -47,10 +45,9 @@ export default InputInstrucoes;
 const Wrapper = styled.div`
 	display: flex;
     position: relative;
-	flex-direction: column;
 	align-items: center;
     margin-left: 15px;
-    margin-right: 150px;
+    margin-right: 180px;
 
     .qtd-instrucoes-wrapper{
         display: flex;
@@ -62,6 +59,19 @@ const Wrapper = styled.div`
         }
     }
 
+    .numeroInstrucoes{
+        display: flex;
+	    flex: 1;
+        font-family: impact;
+        font-size: 25px;
+        color: #dfdfdf;
+        padding: 0 15px 0 25px;
+        width: 25px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+    }
+    
     .myButtonLeft {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
         background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);

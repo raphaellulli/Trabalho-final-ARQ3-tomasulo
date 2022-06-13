@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { IEstacaoReserva, IntrucaoContext } from '../../App';
 import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
-interface IProps {
-}
-
-const QuantidadeTipoRegistrador: React.FC<IProps> = () => {
+const QuantidadeTipoRegistrador: React.FC = () => {
     const {
         arrEstacaoReserva,
         arrTipoRegistrador,
@@ -43,33 +40,29 @@ const QuantidadeTipoRegistrador: React.FC<IProps> = () => {
     useEffect(onArrTipoRegistradorChanges, [arrTipoRegistrador.value])
 
     return (
-        <Wrapper
-            title="Quantidade tipo registrador"
-        >
+        <Wrapper>
             {
                 Object.keys(TipoRegistrador).map((i: any, ind: number) =>
-                    <div className='tipo-registrador' key={'tipo-registrador-' + ind}>
-                        <label>
+                    <Content key={'tipo-registrador-' + ind}>
+                        <Registrador>
                             {i.toUpperCase()}
-                        </label>
+                        </Registrador>
                         <input
                             value={arrTipoRegistrador.findByStringId(i, 'TipoRegistrador').quantidade}
                             type="number"
                             onChange={(e) => {
                                 if (Number(e.target.value) <= 0) return;
-                                arrTipoRegistrador.setValue(
-                                    [
-                                        ...arrTipoRegistrador.value.map(cpi => {
-                                            if (cpi.TipoRegistrador === i) {
-                                                cpi.quantidade = Number(e.target.value);
-                                            }
-                                            return cpi;
-                                        })
-                                    ])
+                                arrTipoRegistrador.setValue([
+                                    ...arrTipoRegistrador.value.map(cpi => {
+                                        if (cpi.TipoRegistrador === i) {
+                                            cpi.quantidade = Number(e.target.value);
+                                        }
+                                        return cpi;
+                                    })
+                                ])
                             }}
                         />
-
-                    </div>
+                    </Content>
                 )
             }
         </Wrapper>
@@ -83,14 +76,16 @@ const Wrapper = styled.div`
 	flex-direction: column;
     align-items: center;
     width: 100%;
-    .tipo-registrador{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 3px;
-        align-items: center;
-        justify-content: center;
-    }
-    label{
-        width: 100px;
-    }
+`;
+
+const Content = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Registrador = styled.label`
+    width: 100px;
 `;

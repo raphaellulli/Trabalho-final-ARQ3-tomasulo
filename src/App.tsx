@@ -116,60 +116,64 @@ function App() {
 
 	return (
 		<IntrucaoContext.Provider value={defaultValue}>
-			<WrapperSiderContent>
-				<div className='parte-topo'>
+			<Wrapper>
+				<ParteTopo>
 					<BotoesConfimarResetar />
-					<div className='linha'></div>
+					<Linha />
 					<AvancarInstrucoes />
 					<InputInstrucoes />
-				</div>
-				<div className='parte-baixo'>
-					<div className='parte-esquerda'>
+				</ParteTopo>
+				<ParteBaixo>
+					<ParteEsquerda>
 						<LeftScreen />
-					</div>
-					<div className='parte-direita'>
+					</ParteEsquerda>
+					<ParteDireita>
 						<RightScreen />
-					</div>
-				</div>
-			</WrapperSiderContent>
+					</ParteDireita>
+				</ParteBaixo>
+			</Wrapper>
 		</IntrucaoContext.Provider >
 	);
 }
 
 export default App;
 
-
-const WrapperSiderContent = styled.div`
+const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 	height: 99vh;
-	
-	.linha{
-		border-right-width: 2px;
-        border-right-style: solid;
-		border-right-color: white;
-	}
+`;
 
-	.parte-topo{
-		display: flex;
-		flex-direction: row;
-		background-color: #777777;
-		padding: 20px;
-	}
-	.parte-baixo{
-		display: flex;
-		flex: 1;
-		flex-direction: row;
-	}
-	.parte-direita{
-		width: 35%;
-		height: 100%;
-		background-color: #CCCCCC;
-	}
-	.parte-esquerda{
-		width: 65%;
-		height: 100%;
-		background-color: #d3d3d3;
-	}
+const ParteTopo = styled.div`
+	display: flex;
+	flex-direction: row;
+	background-color: #777777;
+	height: 10%;
+`;
+
+const ParteBaixo = styled.div`
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+`;
+
+const ParteDireita = styled.div`
+	width: 35%;
+	height: 100%;
+	background-color: #CCCCCC;
+`;
+
+const ParteEsquerda = styled.div`
+	width: 65%;
+	height: 100%;
+	background-color: #d3d3d3;
+`;
+
+const Linha = styled.div`
+	border-right-width: 2px;
+    border-right-style: solid;
+	border-right-color: white;
+	align-self: center;
+	height: 50%;
 `;

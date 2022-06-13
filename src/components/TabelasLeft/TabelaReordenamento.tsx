@@ -21,18 +21,15 @@ const TabelaReordenamento: React.FC = () => {
     }
 
     return (
-        <Wrapper
-            title='Instruções'
-        >
-            <STabela>
+        <Wrapper>
+            <Tabela>
                 <thead>
                     <tr>
-                        <th>Entrada</th>
-                        <th>Ocupado</th>
-                        <th>Instrução</th>
-                        <th>Estado</th>
-                        <th>Destino</th>
-                        {/* <th>Valor</th> */}
+                        <Superior>Entrada</Superior>
+                        <Superior>Ocupado</Superior>
+                        <Superior>Instrução</Superior>
+                        <Superior>Estado</Superior>
+                        <Superior>Destino</Superior>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,43 +39,40 @@ const TabelaReordenamento: React.FC = () => {
                                 const instrucao = arrInstrucoes.value.find(instrucao => instrucao.id === bufferRe.idInstrucao);
                                 if (!instrucao) return (
                                     <tr>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        {/* <td>--</td> */}
+                                        <Inferior></Inferior>
+                                        <Inferior></Inferior>
+                                        <Inferior></Inferior>
+                                        <Inferior></Inferior>
+                                        <Inferior></Inferior>
                                     </tr>)
                                 return (
                                     <tr>
-                                        <td>{ind+1}</td>
-                                        <td>{!instrucao.commited ? 'X' : ''}</td>
-                                        <td>
+                                        <Inferior>{ind + 1}</Inferior>
+                                        <Inferior>{!instrucao.commited ? 'X' : ''}</Inferior>
+                                        <Inferior>
                                             {
                                                 instrucao.nome +
                                                 (!!instrucao.entrada1 ? ", " + instrucao.entrada1.toUpperCase() : '') +
                                                 (!!instrucao.entrada2 ? ", " + instrucao.entrada2.toUpperCase() : '') +
                                                 (!!instrucao.entrada3 ? ", " + instrucao.entrada3?.toUpperCase() : '')
                                             }
-                                        </td>
-                                        <td>{getEstadoInstrucao(instrucao)}</td>
-                                        <td>{instrucao.entrada1}</td>
-                                        {/* <td>TODO</td> */}
+                                        </Inferior>
+                                        <Inferior>{getEstadoInstrucao(instrucao)}</Inferior>
+                                        <Inferior>{instrucao.entrada1}</Inferior>
                                     </tr>)
                             }
                             )
                             :
                             <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                {/* <td>--</td> */}
+                                <Inferior></Inferior>
+                                <Inferior></Inferior>
+                                <Inferior></Inferior>
+                                <Inferior></Inferior>
+                                <Inferior></Inferior>
                             </tr>
                     }
                 </tbody>
-            </STabela>
+            </Tabela>
         </Wrapper >
     );
 }
@@ -87,25 +81,30 @@ export default TabelaReordenamento;
 
 const Wrapper = styled.div`
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
     height: fit-content;
     max-height: 60vh;
-    -webkit-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    -moz-box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
-    box-shadow: 8px 7px 28px -17px rgba(29,26,71,0.57);
 `;
 
-const STabela = styled.table`
-	border: 1px solid black;
-	th{
-		border: 1px solid gray;
-		padding: 10px;
-	}
-	td { 
-		border: 1px solid gray;
-		padding: 10px;
-	}
+const Tabela = styled.table`
+	border: 2px solid #777777;
 `;
 
+const Superior = styled.th`
+    border: 2px solid #777777;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+`;
+
+const Inferior = styled.td`
+    border: 2px solid #777777;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 18px 3px 18px 3px;
+`;

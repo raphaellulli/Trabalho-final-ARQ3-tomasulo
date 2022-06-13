@@ -8,17 +8,15 @@ const RightScreen: React.FC = () => {
 
     return (
         <Wrapper>
-            <div className='wrapper-ciclos-registrador'>
-                <div className='borda-divisoria'>
-                    <InstrucoesTotais />
-                </div>
-                <div className='borda-divisoria'>
-                    <CiclosPorInstrucao />
-                </div>
-                <div className='borda-divisoria'>
-                    <QuantidadeTipoRegistrador />
-                </div>
-            </div>
+            <Borda>
+                <InstrucoesTotais />
+            </Borda>
+            <Borda>
+                <CiclosPorInstrucao />
+            </Borda>
+            <Borda>
+                <QuantidadeTipoRegistrador />
+            </Borda>
         </Wrapper >
     );
 }
@@ -32,21 +30,17 @@ const Wrapper = styled.div`
 	justify-content: flex-start;
     position: relative;
     height: 100%;
+`;
 
-    .wrapper-ciclos-registrador{
-        display: flex;
-        flex-direction: column;
-    }
-    .borda-divisoria{
-        padding: 15px;
-        margin: 15px;
-        display: flex;
-        justify-content: 'center'; 
-        align-content: 'center'; 
-        align-items: 'center';
-        border-style: double;
-        border-width: 3px;
-        border-color: #777777;
-        border-radius: 8px;
-    }
+const Borda = styled.div`
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    justify-content: 'center'; 
+    align-content: 'center'; 
+    align-items: 'center';
+    border-style: double;
+    border-width: 3px;
+    border-color: #777777;
+    border-radius: 8px;
 `;
