@@ -1,7 +1,9 @@
 export const TipoInstrucao = {
-    Add: 'Add',
-    Sub: 'Sub',
-    Mul: 'Mul',
-    Ldr: 'Ldr',
-    Str: 'Str',
-}
+  Add: "Add",
+  Sub: "Sub",
+  Mult: "Mult",
+  Div: "Div",
+  Ld: "Ld",
+  St: "St",
+  Jump: "Jump",
+};
