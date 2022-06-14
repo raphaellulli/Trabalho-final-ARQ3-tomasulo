@@ -21,10 +21,10 @@ const TabelaEstacaoReserva: React.FC = () => {
                         <Superior>Nome</Superior>
                         <Superior>Ocupada</Superior>
                         <Superior>Operação</Superior>
-                        <Superior>Vj</Superior>
-                        <Superior>Vk</Superior>
-                        <Superior>Qj</Superior>
-                        <Superior>Qk</Superior>
+                        <Superior>VJ</Superior>
+                        <Superior>VK</Superior>
+                        <Superior>QJ</Superior>
+                        <Superior>QK</Superior>
                         <Superior>A</Superior>
                         <Superior>Destino</Superior>
                     </tr>

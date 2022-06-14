@@ -177,7 +177,7 @@ const ParteBaixo = styled.div`
 `;
 
 const ParteDireita = styled.div`
-	width: 35%;
+	width: 32%;
 	height: 100%;
 	background-color: #CCCCCC;
 	border-top: 3px solid #777777;
@@ -186,7 +186,7 @@ const ParteDireita = styled.div`
 `;
 
 const ParteEsquerda = styled.div`
-	width: 65%;
+	width: 68%;
 	height: 100%;
 	background-color: #d3d3d3;
 	border: 3px solid #777777;

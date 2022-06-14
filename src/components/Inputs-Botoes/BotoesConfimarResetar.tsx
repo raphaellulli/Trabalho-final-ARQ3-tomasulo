@@ -19,20 +19,30 @@ const BotoesConfimarResetar: React.FC = () => {
     } = useContext(IntrucaoContext);
 
     const onCliqueConfirmar = () => {
+
         if (arrInstrucoes.value.length <= 0) {
-            alert('Não há instruções para confirmar');
+            alert('Não existe nenhuma instrução');
             return;
         }
+
         let ehValido = true;
-        arrInstrucoes.value.forEach((i, ind) => {
-            if ((i.nome === TipoInstrucao.Add || i.nome === TipoInstrucao.Sub || i.nome === TipoInstrucao.Mul || i.nome === TipoInstrucao.Ldr || i.nome === TipoInstrucao.Ldr) && (!i.entrada1 || !i.entrada2 || !i.entrada3)) {
+        
+        arrInstrucoes.value.forEach((i) => {
+            if ((i.nome === TipoInstrucao.Add ||
+                i.nome === TipoInstrucao.Sub ||
+                i.nome === TipoInstrucao.Mul ||
+                i.nome === TipoInstrucao.Ldr ||
+                i.nome === TipoInstrucao.Ldr) &&
+                (!i.entrada1 || !i.entrada2 || !i.entrada3)) {
                 ehValido = false;
-                alert(`'Instrução ${ind + 1}' ${i.nome} deve ter 3 entradas (entrada1 e entrada2 e entrada3)`);
             }
 
         })
-        if (!ehValido)
+
+        if (!ehValido) {
+            alert(`Preencha todas as instruções!`);
             return;
+        }
 
         arrInstrucoes.setValue([...arrInstrucoes.value.map(i => {
             i.enviada = false;
@@ -62,11 +72,12 @@ const BotoesConfimarResetar: React.FC = () => {
     }
 
     const onCliqueResetar = () => {
+        
         setConfirmado(false);
         setCicloAtual(0);
         setQuantidadeInstrucoes(1);
         arrRegistrador.setValue([...new Array(16).fill({ nome: '', valor: '' }).map((i, ind) => ({ nome: `F${ind}`, valor: '' }))])
-        arrTipoRegistrador.setValue(Object.keys(TipoRegistrador).map((i: any, ind: number) => {
+        arrTipoRegistrador.setValue(Object.keys(TipoRegistrador).map((i: any) => {
             return (
                 {
                     quantidade: 1,
@@ -74,7 +85,7 @@ const BotoesConfimarResetar: React.FC = () => {
                 }
             )
         }))
-        arrCicloPorInstrucao.setValue(Object.keys(TipoInstrucao).map((i: any, ind: number) => {
+        arrCicloPorInstrucao.setValue(Object.keys(TipoInstrucao).map((i: any) => {
             return (
                 {
                     quantidade: 1,
