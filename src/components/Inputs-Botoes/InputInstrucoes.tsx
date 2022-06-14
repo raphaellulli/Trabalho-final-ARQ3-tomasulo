@@ -37,11 +37,13 @@ const InputInstrucoes: React.FC = () => {
 export default InputInstrucoes;
 
 const Wrapper = styled.div`
+    align-items: center;
 	display: flex;
-    position: relative;
-	align-items: center;
+	flex-direction: row;
+	justify-content: flex-start;
+    text-align: center;
     margin-left: 15px;
-    margin-right: 210px;
+    margin-right: 15px;
     
     .myButtonLeft {
         box-shadow: inset 0px 1px 0px 0px #ffffff;

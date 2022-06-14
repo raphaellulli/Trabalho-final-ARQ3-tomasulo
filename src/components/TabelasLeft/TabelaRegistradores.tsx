@@ -33,7 +33,7 @@ const TabelaRegistradores: React.FC = () => {
 export default TabelaRegistradores;
 
 const Tabela = styled.table`
-    border: 2px solid #777777;
+    border-bottom: 3px solid #777777;
     text-align: center;
     padding: 5px;
 `;

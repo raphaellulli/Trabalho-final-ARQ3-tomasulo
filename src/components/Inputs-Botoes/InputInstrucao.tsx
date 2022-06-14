@@ -72,7 +72,7 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
                     >
                         <div>
                             <label>
-                                {i}
+                                {i.toUpperCase()}
                             </label>
                         </div>
                     </option>
@@ -80,19 +80,19 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
             </Select>
             <Input
                 disabled={confirmado}
-                placeholder='Reg Destino'
+                placeholder='DESTINO'
                 value={arrInstrucoes.value[index]?.entrada1 ?? ''}
                 onChange={(e) => { AssociarInstrucao(e.target.value, 1) }}
             />
             <Input
                 disabled={confirmado}
-                placeholder='Reg Origem'
+                placeholder='ORIGEM'
                 value={arrInstrucoes.value[index]?.entrada2 ?? ''}
                 onChange={(e) => { AssociarInstrucao(e.target.value, 2) }}
             />
             <Input
                 disabled={confirmado}
-                placeholder='Reg Origem'
+                placeholder='ORIGEM'
                 value={arrInstrucoes.value[index]?.entrada3 ?? ''}
                 onChange={(e) => { AssociarInstrucao(e.target.value, 3) }}
             />
@@ -125,7 +125,7 @@ const Select = styled.select`
 `;
 
 const Input = styled.input`
-    width: 100px;
+    width: 80px;
     margin-right: 2px;
     padding: 4px;
 `;

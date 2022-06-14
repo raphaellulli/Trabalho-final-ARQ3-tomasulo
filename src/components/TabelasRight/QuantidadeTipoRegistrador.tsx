@@ -46,7 +46,7 @@ const QuantidadeTipoRegistrador: React.FC = () => {
                     <Registrador>
                         {i.toUpperCase()}
                     </Registrador>
-                    <input
+                    <Input
                         value={arrTipoRegistrador.findByStringId(i, 'TipoRegistrador').quantidade}
                         type="number"
                         onChange={(e) => {
@@ -73,6 +73,7 @@ const Wrapper = styled.div`
     display: flex;
 	flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
 `;
 
@@ -89,4 +90,10 @@ const Registrador = styled.label`
     font-size: 15px;
     font-weight: bold;
     width: 100px;
+`;
+
+const Input = styled.input`
+    width: 80px;
+    margin-right: 2px;
+    padding: 4px;
 `;

@@ -16,7 +16,7 @@ const CiclosPorInstrucao: React.FC = () => {
                     <Instrucao>
                         {i.toUpperCase()}
                     </Instrucao>
-                    <input
+                    <Input
                         value={arrCicloPorInstrucao.findByStringId(i, 'TipoInstrucao').quantidade}
                         type="number"
                         onChange={(e) => {
@@ -47,6 +47,13 @@ const Wrapper = styled.div`
 
 `;
 
+const Content = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+    align-items: center;
+`;
+
 const Instrucao = styled.label`
     font-family: Arial;
     font-size: 15px;
@@ -54,9 +61,8 @@ const Instrucao = styled.label`
     width: 40px;
 `;
 
-const Content = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 3px;
-    align-items: center;
+const Input = styled.input`
+    width: 80px;
+    margin-right: 2px;
+    padding: 4px;
 `;

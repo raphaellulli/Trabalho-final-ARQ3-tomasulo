@@ -126,8 +126,9 @@ function App() {
 				<ParteTopo>
 					<BotoesConfimarResetar />
 					<Linha />
-					<AvancarInstrucoes />
 					<InputInstrucoes />
+					<Linha />
+					<AvancarInstrucoes />
 				</ParteTopo>
 				<ParteBaixo>
 					<ParteEsquerda>
@@ -163,6 +164,7 @@ const Titulo = styled.label`
 
 const ParteTopo = styled.div`
 	display: flex;
+	justify-content: flex-start;
 	flex-direction: row;
 	background-color: #777777;
 	height: 10%;
@@ -178,12 +180,16 @@ const ParteDireita = styled.div`
 	width: 35%;
 	height: 100%;
 	background-color: #CCCCCC;
+	border-top: 3px solid #777777;
+	border-bottom: 3px solid #777777;
+	border-right: 3px solid #777777;
 `;
 
 const ParteEsquerda = styled.div`
 	width: 65%;
 	height: 100%;
 	background-color: #d3d3d3;
+	border: 3px solid #777777;
 `;
 
 const Linha = styled.div`

@@ -261,12 +261,12 @@ export default AvancarInstrucoes;
 
 const Wrapper = styled.div`
     display: flex;
-	flex-direction: row;
-	flex: 1;
+	flex-direction: row;;
     align-items: center;
 	justify-content: flex-start;
     text-align: center;
     margin-left: 15px;
+    margin-right: 15px;
 
     .myButton {
         box-shadow: inset 0px 1px 0px 0px #ffffff;

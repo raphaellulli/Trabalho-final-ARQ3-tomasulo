@@ -8,28 +8,42 @@ const TelaDireita: React.FC = () => {
 
     return (
         <Wrapper>
-            <Borda>
-                <InstrucoesTotais />
-            </Borda>
-            <Borda>
-                <CiclosPorInstrucao />
-            </Borda>
-            <Borda>
-                <QuantidadeTipoRegistrador />
-            </Borda>
-        </Wrapper >
+            <ParteTopo>
+                <Borda>
+                    <InstrucoesTotais />
+                </Borda>
+            </ParteTopo >
+            <ParteBaixo>
+                <Borda>
+                    <CiclosPorInstrucao />
+                </Borda>
+                <Borda>
+                    <QuantidadeTipoRegistrador />
+                </Borda>
+            </ParteBaixo>
+        </Wrapper>
     );
 }
 
 export default TelaDireita;
 
 const Wrapper = styled.div`
+    display: flex;
+	flex: 1;
+    flex-direction: column;
+`;
+
+const ParteTopo = styled.div`
 	display: flex;
 	flex-direction: column;
+    justify-content: center;
 	align-items: center;
-	justify-content: flex-start;
-    position: relative;
-    height: 100%;
+`;
+
+const ParteBaixo = styled.div`
+	display: flex;
+	flex-direction: row;
+    justify-content: center;
 `;
 
 const Borda = styled.div`
