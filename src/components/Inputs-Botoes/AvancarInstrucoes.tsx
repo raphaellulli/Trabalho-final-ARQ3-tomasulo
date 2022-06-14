@@ -81,7 +81,9 @@ const AvancarInstrucoes: React.FC = () => {
                 arrInstrucoes.value
                   .slice(indexInst - 1)
                   .forEach((i) => arrInstrucoesParaDescartar.push(i.id));
-                alert("Instruções descartadas, valor do Jump confirmado.");
+                alert(
+                  "Instruções foram descartadas!\nValor do Jump foi confirmado."
+                );
               }
             }
             er.Ciclos = 0;
