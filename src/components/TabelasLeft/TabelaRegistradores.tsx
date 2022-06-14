@@ -55,9 +55,3 @@ const Inferior = styled.th`
 	border: 2px solid #777777;
 	padding: 15px;
 `;
-
-const Titulo = styled.label`
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-`;
