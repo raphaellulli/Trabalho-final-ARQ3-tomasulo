@@ -49,6 +49,7 @@ const BotoesConfimarResetar: React.FC = () => {
         i.escrita = false;
         i.resultado = false;
         i.commitada = false;
+        i.lixo = false;
         return i;
       }),
     ]);

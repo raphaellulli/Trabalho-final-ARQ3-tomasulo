@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { IntrucaoContext } from "../../App";
 
 const TabelaRegistradores: React.FC = () => {
-  const { ArrayDeRegistrador: arrRegistrador } = useContext(IntrucaoContext);
+  const { ArrayDeRegistrador: arrRegistrador, ArrayDeInstrucoes } =
+    useContext(IntrucaoContext);
 
   return (
     <Tabela>
@@ -23,7 +24,17 @@ const TabelaRegistradores: React.FC = () => {
             arrRegistrador.value &&
             arrRegistrador.value.length &&
             arrRegistrador.value.map((registrador) => (
-              <Inferior>{registrador.valor}</Inferior>
+              <Inferior>
+                {registrador.valor
+                  ? (ArrayDeInstrucoes.value.find(
+                      (i) => i.input1 == registrador.valor
+                    )?.input2 ?? "") +
+                    " + " +
+                    (ArrayDeInstrucoes.value.find(
+                      (i) => i.input1 == registrador.valor
+                    )?.input3 ?? "")
+                  : ""}
+              </Inferior>
             ))}
         </tr>
       </tbody>

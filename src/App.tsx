@@ -88,7 +88,7 @@ function App() {
   const ArrayDeInstrucoes = useArray<PropsInstrucoes>([]);
   const ArrayBufferDeReordenamento = useArray<PropsReordenamento>([]);
   const ArrayEstacaoReserva = useArray<PropsReserva>([]);
-  const bufferTotal = 6;
+  const bufferTotal = 200;
   const arrRegistrador = useArray<PropsRegistrador>(
     new Array(16)
       .fill({ nome: "", valor: "" })
@@ -97,7 +97,7 @@ function App() {
   const arrCicloPorInstrucao = useArray<PropsCiclos>(
     Object.keys(TipoInstrucao).map((i: any, ind: number) => {
       return {
-        quantidade: 1,
+        quantidade: 2,
         TipoInstrucao: i,
       };
     })
@@ -105,7 +105,7 @@ function App() {
   const arrTipoRegistrador = useArray<PropsRegistradoresTipo>(
     Object.keys(TipoRegistrador).map((i: any, ind: number) => {
       return {
-        quantidade: 1,
+        quantidade: 2,
         TipoRegistrador: i,
       };
     })

@@ -9,7 +9,7 @@ const TabelaEstacaoReserva: React.FC = () => {
   return (
     <Tablea>
       <div>
-        <Titulo>Banco de Registradores</Titulo>
+        <Titulo>Estação de Reserva</Titulo>
       </div>
       <div>
         <thead>

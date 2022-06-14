@@ -21,7 +21,7 @@ const TabelaReordenamento: React.FC = () => {
     <Wrapper>
       <Tabela>
         <div>
-          <Titulo>Instruções Reordenadas</Titulo>
+          <Titulo>Buffer de Reordenamento</Titulo>
         </div>
         <div>
           <thead>

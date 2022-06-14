@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import InstrucoesTotais from "../../components/TabelasRight/InstrucoesTotais";
-import CiclosPorInstrucao from "../../components/TabelasRight/CiclosPorInstrucao";
-import QuantidadeTipoRegistrador from "../../components/TabelasRight/QuantidadeTipoRegistrador";
 
 const TelaDireita: React.FC = () => {
   return (
@@ -12,14 +10,6 @@ const TelaDireita: React.FC = () => {
           <InstrucoesTotais />
         </Borda>
       </ParteTopo>
-      <ParteBaixo>
-        <Borda>
-          <CiclosPorInstrucao />
-        </Borda>
-        <Borda>
-          <QuantidadeTipoRegistrador />
-        </Borda>
-      </ParteBaixo>
     </Wrapper>
   );
 };
@@ -37,12 +27,6 @@ const ParteTopo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const ParteBaixo = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 `;
 
 const Borda = styled.div`
