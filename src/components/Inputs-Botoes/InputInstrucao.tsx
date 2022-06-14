@@ -8,14 +8,15 @@ interface IProps {
 }
 
 const InputInstrucao: React.FC<IProps> = ({ index }) => {
-  const { arrInstrucoes, confirmado } = useContext(IntrucaoContext);
+  const { ArrayDeInstrucoes: arrInstrucoes, confirmado } =
+    useContext(IntrucaoContext);
 
   const AssociarInstrucao = (valor: string, indexInstrucao: number) => {
     const newArray = arrInstrucoes.value.map((i, ind) => {
       if (ind === index) {
-        if (indexInstrucao === 1) i.entrada1 = valor?.toUpperCase();
-        else if (indexInstrucao === 2) i.entrada2 = valor?.toUpperCase();
-        else if (indexInstrucao === 3) i.entrada3 = valor?.toUpperCase();
+        if (indexInstrucao === 1) i.input1 = valor?.toUpperCase();
+        else if (indexInstrucao === 2) i.input2 = valor?.toUpperCase();
+        else if (indexInstrucao === 3) i.input3 = valor?.toUpperCase();
         else if (indexInstrucao === 4) i.nome = valor as any;
       }
       return i;
@@ -29,13 +30,13 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
         id: index + 1 + "",
         nome: "Add",
         enviada: false,
-        executada: false,
+        resultado: false,
         escrita: false,
-        commited: false,
-        entrada1: "",
-        entrada2: "",
-        entrada3: "",
-        descartada: false,
+        commitada: false,
+        input1: "",
+        input2: "",
+        input3: "",
+        lixo: false,
       });
     else {
       throw new Error(
@@ -74,7 +75,7 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
       <Input
         disabled={confirmado}
         placeholder="DESTINO"
-        value={arrInstrucoes.value[index]?.entrada1 ?? ""}
+        value={arrInstrucoes.value[index]?.input1 ?? ""}
         onChange={(e) => {
           AssociarInstrucao(e.target.value, 1);
         }}
@@ -82,7 +83,7 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
       <Input
         disabled={confirmado}
         placeholder="ORIGEM"
-        value={arrInstrucoes.value[index]?.entrada2 ?? ""}
+        value={arrInstrucoes.value[index]?.input2 ?? ""}
         onChange={(e) => {
           AssociarInstrucao(e.target.value, 2);
         }}
@@ -90,7 +91,7 @@ const InputInstrucao: React.FC<IProps> = ({ index }) => {
       <Input
         disabled={confirmado}
         placeholder="ORIGEM"
-        value={arrInstrucoes.value[index]?.entrada3 ?? ""}
+        value={arrInstrucoes.value[index]?.input3 ?? ""}
         onChange={(e) => {
           AssociarInstrucao(e.target.value, 3);
         }}

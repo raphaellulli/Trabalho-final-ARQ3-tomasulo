@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-import { IEstacaoReserva, IntrucaoContext } from "../../App";
+import { PropsReserva, IntrucaoContext } from "../../App";
 import { TipoRegistrador } from "../../Enums/TipoRegistrador";
 
 const QuantidadeTipoRegistrador: React.FC = () => {
-  const { arrEstacaoReserva, arrTipoRegistrador } = useContext(IntrucaoContext);
+  const {
+    ArrayDeEstacaoReserva: arrEstacaoReserva,
+    ArrayTipoRegistrador: arrTipoRegistrador,
+  } = useContext(IntrucaoContext);
 
   //@ts-ignore
   var groupBy = function (xs, key): {} {
@@ -16,7 +19,7 @@ const QuantidadeTipoRegistrador: React.FC = () => {
   };
 
   const onArrTipoRegistradorChanges = () => {
-    const arrAux: IEstacaoReserva[] = [];
+    const arrAux: PropsReserva[] = [];
     const arrayAgrupado = groupBy(arrTipoRegistrador.value, "TipoRegistrador");
     Object.keys(TipoRegistrador).forEach((tr) => {
       //@ts-ignore
@@ -25,7 +28,7 @@ const QuantidadeTipoRegistrador: React.FC = () => {
           arrAux.push({
             nome: `${g.TipoRegistrador}${i + 1}`,
             TipoRegistrador: g.TipoRegistrador,
-            ocupada: false,
+            busy: false,
           });
         }
       });
@@ -37,6 +40,7 @@ const QuantidadeTipoRegistrador: React.FC = () => {
 
   return (
     <Wrapper>
+      <Titulo>Quantidade de Registradores</Titulo>
       {Object.keys(TipoRegistrador).map((i: any, ind: number) => (
         <Content key={"tipo-registrador-" + ind}>
           <Registrador>{i.toUpperCase()}</Registrador>
@@ -69,16 +73,22 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
+`;
+
+const Titulo = styled.label`
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 30px;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-bottom: 3px;
   align-items: center;
-  justify-content: center;
 `;
 
 const Registrador = styled.label`
@@ -91,5 +101,5 @@ const Registrador = styled.label`
 const Input = styled.input`
   width: 80px;
   margin-right: 2px;
-  padding: 4px;
+  padding: 8px;
 `;

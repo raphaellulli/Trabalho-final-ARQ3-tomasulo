@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { IntrucaoContext } from "../../App";
 
 const TabelaEstacaoReserva: React.FC = () => {
-  const { arrEstacaoReserva } = useContext(IntrucaoContext);
+  const { ArrayDeEstacaoReserva: arrEstacaoReserva } =
+    useContext(IntrucaoContext);
 
   return (
     <Tablea>
@@ -39,12 +40,12 @@ const TabelaEstacaoReserva: React.FC = () => {
                       : ""}
                   </Inferior>
                   <Inferior>{estacaoReserva.nome}</Inferior>
-                  <Inferior>{estacaoReserva.ocupada ? "X" : ""}</Inferior>
+                  <Inferior>{estacaoReserva.busy ? "X" : ""}</Inferior>
                   <Inferior>{estacaoReserva.operacao}</Inferior>
-                  <Inferior>{estacaoReserva.Vj}</Inferior>
-                  <Inferior>{estacaoReserva.Vk}</Inferior>
-                  <Inferior>{estacaoReserva.Qj}</Inferior>
-                  <Inferior>{estacaoReserva.Qk}</Inferior>
+                  <Inferior>{estacaoReserva.VJ}</Inferior>
+                  <Inferior>{estacaoReserva.VK}</Inferior>
+                  <Inferior>{estacaoReserva.QJ}</Inferior>
+                  <Inferior>{estacaoReserva.QK}</Inferior>
                   <Inferior>{estacaoReserva.A}</Inferior>
                   <Inferior>{estacaoReserva.destino}</Inferior>
                 </tr>

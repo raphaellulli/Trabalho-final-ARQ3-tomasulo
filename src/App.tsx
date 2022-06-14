@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react";
 import styled from "styled-components";
 import { useArray, UseArrayActions } from "./hooks/useArray";
 import { TipoInstrucao } from "./Enums/TipoInstrucao";
@@ -9,89 +14,87 @@ import BotoesConfimarResetar from "./components/Inputs-Botoes/BotoesConfimarRese
 import InputInstrucoes from "./components/Inputs-Botoes/InputInstrucoes";
 import AvancarInstrucoes from "./components/Inputs-Botoes/AvancarInstrucoes";
 
-export interface IInstrucoes {
+export interface PropsInstrucoes {
   id: string;
   nome: keyof typeof TipoInstrucao;
   enviada: boolean;
-  executada: boolean;
+  resultado: boolean;
   escrita: boolean;
-  commited: boolean;
-  entrada1: string;
-  entrada2: string;
-  entrada3?: string;
-  descartada: boolean;
+  commitada: boolean;
+  input1: string;
+  input2: string;
+  input3?: string;
+  lixo: boolean;
 }
 
-export interface IEstacaoReserva {
+export interface PropsReserva {
   nome: string;
   idInstrucao?: string;
   TipoRegistrador: keyof typeof TipoRegistrador;
   destino?: string;
   registradorSendoUtilizado?: string;
-  ocupada: boolean;
+  busy: boolean;
   operacao?: string;
-  Vj?: string;
-  Vk?: string;
-  Qj?: string;
-  Qk?: string;
+  VJ?: string;
+  VK?: string;
+  QJ?: string;
+  QK?: string;
   A?: string;
   Ciclos?: number;
 }
-
-export interface IRegistrador {
-  nome: string;
-  valor: string;
+export interface PropsReordenamento {
+  idInstrucao: string;
+  valor?: string;
 }
-
-export interface ICicloPorInstrucao {
+export interface PropsCiclos {
   TipoInstrucao: keyof typeof TipoInstrucao;
   quantidade: number;
 }
 
-export interface ITipoRegistrador {
+export interface PropsRegistrador {
+  nome: string;
+  valor: string;
+}
+
+export interface PropsRegistradoresTipo {
   TipoRegistrador: keyof typeof TipoRegistrador;
   quantidade: number;
 }
 
-export interface IBufferReordenamento {
-  idInstrucao: string;
-  valor?: string;
-}
-
-export interface IIntrucaoContextProps {
-  arrInstrucoes: UseArrayActions<IInstrucoes>;
-  arrEstacaoReserva: UseArrayActions<IEstacaoReserva>;
-  arrRegistrador: UseArrayActions<IRegistrador>;
-  arrCicloPorInstrucao: UseArrayActions<ICicloPorInstrucao>;
-  arrTipoRegistrador: UseArrayActions<ITipoRegistrador>;
-  arrBufferReordenamento: UseArrayActions<IBufferReordenamento>;
-  setQuantidadeInstrucoes: React.Dispatch<React.SetStateAction<number>>;
+export interface PropsContextoDeInstrucao {
+  ArrayDeInstrucoes: UseArrayActions<PropsInstrucoes>;
+  ArrayDeEstacaoReserva: UseArrayActions<PropsReserva>;
+  ArrayDeRegistrador: UseArrayActions<PropsRegistrador>;
+  ArrayDeCiclodeInstrucao: UseArrayActions<PropsCiclos>;
+  ArrayTipoRegistrador: UseArrayActions<PropsRegistradoresTipo>;
+  ArrayDeReordenamentoDeBuffer: UseArrayActions<PropsReordenamento>;
+  setQuantidadeInstrucoes: Dispatch<SetStateAction<number>>;
   quantidadeInstrucoes: number;
-  setConfirmado: React.Dispatch<React.SetStateAction<boolean>>;
+  setConfirmado: Dispatch<SetStateAction<boolean>>;
   confirmado: boolean;
-  setCicloAtual: React.Dispatch<React.SetStateAction<number>>;
+  setCicloAtual: Dispatch<SetStateAction<number>>;
   cicloAtual: number;
   tamnhoBuffer: number;
 }
 
-export const IntrucaoContext = React.createContext<IIntrucaoContextProps>(
-  {} as IIntrucaoContextProps
+export const IntrucaoContext = createContext<PropsContextoDeInstrucao>(
+  {} as PropsContextoDeInstrucao
 );
 
 function App() {
-  const tamnhoBuffer = 6;
-  const [cicloAtual, setCicloAtual] = React.useState(0);
-  const [quantidadeInstrucoes, setQuantidadeInstrucoes] = useState<number>(1);
-  const [confirmado, setConfirmado] = useState<boolean>(false);
-  const arrInstrucoes = useArray<IInstrucoes>([]);
-  const arrBufferReordenamento = useArray<IBufferReordenamento>([]);
-  const arrEstacaoReserva = useArray<IEstacaoReserva>([]);
-  const arrRegistrador = useArray<IRegistrador>(
+  const [cicloAtual, setCicloAtual] = useState(0);
+  const [resultado, setResultado] = useState<boolean>(false);
+  const [totalDeInstrucao, setTotalDeInstrucao] = useState<number>(1);
+  const ArrayDeInstrucoes = useArray<PropsInstrucoes>([]);
+  const ArrayBufferDeReordenamento = useArray<PropsReordenamento>([]);
+  const ArrayEstacaoReserva = useArray<PropsReserva>([]);
+  const bufferTotal = 6;
+  const arrRegistrador = useArray<PropsRegistrador>(
     new Array(16)
       .fill({ nome: "", valor: "" })
       .map((i, ind) => ({ nome: `F${ind}`, valor: "" }))
   );
-  const arrCicloPorInstrucao = useArray<ICicloPorInstrucao>(
+  const arrCicloPorInstrucao = useArray<PropsCiclos>(
     Object.keys(TipoInstrucao).map((i: any, ind: number) => {
       return {
         quantidade: 1,
@@ -99,7 +102,7 @@ function App() {
       };
     })
   );
-  const arrTipoRegistrador = useArray<ITipoRegistrador>(
+  const arrTipoRegistrador = useArray<PropsRegistradoresTipo>(
     Object.keys(TipoRegistrador).map((i: any, ind: number) => {
       return {
         quantidade: 1,
@@ -108,20 +111,20 @@ function App() {
     })
   );
 
-  const defaultValue: IIntrucaoContextProps = {
-    arrInstrucoes,
-    arrEstacaoReserva,
-    arrRegistrador,
-    arrCicloPorInstrucao,
-    arrBufferReordenamento,
-    arrTipoRegistrador,
-    quantidadeInstrucoes,
-    setQuantidadeInstrucoes,
-    confirmado,
-    setConfirmado,
+  const defaultValue: PropsContextoDeInstrucao = {
+    ArrayDeInstrucoes: ArrayDeInstrucoes,
+    ArrayDeEstacaoReserva: ArrayEstacaoReserva,
+    ArrayDeRegistrador: arrRegistrador,
+    ArrayDeCiclodeInstrucao: arrCicloPorInstrucao,
+    ArrayDeReordenamentoDeBuffer: ArrayBufferDeReordenamento,
+    ArrayTipoRegistrador: arrTipoRegistrador,
+    quantidadeInstrucoes: totalDeInstrucao,
+    setQuantidadeInstrucoes: setTotalDeInstrucao,
+    confirmado: resultado,
+    setConfirmado: setResultado,
     cicloAtual,
     setCicloAtual,
-    tamnhoBuffer,
+    tamnhoBuffer: bufferTotal,
   };
 
   return (

@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { IntrucaoContext } from "../../App";
 
 const InputInstrucoes: React.FC = () => {
-  const { quantidadeInstrucoes, setQuantidadeInstrucoes } =
-    useContext(IntrucaoContext);
+  const {
+    quantidadeInstrucoes,
+    setQuantidadeInstrucoes: setQuantidadeInstrucoes,
+  } = useContext(IntrucaoContext);
 
   return (
     <Wrapper>

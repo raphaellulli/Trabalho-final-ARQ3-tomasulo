@@ -4,10 +4,12 @@ import { IntrucaoContext } from "../../App";
 import { TipoInstrucao } from "../../Enums/TipoInstrucao";
 
 const CiclosPorInstrucao: React.FC = () => {
-  const { arrCicloPorInstrucao } = useContext(IntrucaoContext);
+  const { ArrayDeCiclodeInstrucao: arrCicloPorInstrucao } =
+    useContext(IntrucaoContext);
 
   return (
     <Wrapper>
+      <Titulo>Ciclos</Titulo>
       {Object.keys(TipoInstrucao).map((i: any, ind: number) => (
         <Content key={"ciclo-por-instrucao-" + ind}>
           <Instrucao>{i.toUpperCase()}</Instrucao>
@@ -43,6 +45,13 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const Titulo = styled.label`
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 15px;
+`;
+
 const Content = styled.div`
   display: flex;
   flex-direction: row;
@@ -61,5 +70,5 @@ const Instrucao = styled.label`
 const Input = styled.input`
   width: 80px;
   margin-right: 2px;
-  padding: 4px;
+  padding: 8px;
 `;

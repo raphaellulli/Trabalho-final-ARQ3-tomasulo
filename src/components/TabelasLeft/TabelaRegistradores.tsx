@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { IntrucaoContext } from "../../App";
 
 const TabelaRegistradores: React.FC = () => {
-  const { arrRegistrador } = useContext(IntrucaoContext);
+  const { ArrayDeRegistrador: arrRegistrador } = useContext(IntrucaoContext);
 
   return (
     <Tabela>

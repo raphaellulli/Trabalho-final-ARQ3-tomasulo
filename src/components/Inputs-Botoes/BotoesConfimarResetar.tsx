@@ -6,15 +6,15 @@ import { TipoRegistrador } from "../../Enums/TipoRegistrador";
 
 const BotoesConfimarResetar: React.FC = () => {
   const {
-    arrInstrucoes,
-    arrCicloPorInstrucao,
-    arrTipoRegistrador,
-    arrRegistrador,
-    setQuantidadeInstrucoes,
-    arrEstacaoReserva,
+    ArrayDeInstrucoes: arrInstrucoes,
+    ArrayDeCiclodeInstrucao: arrCicloPorInstrucao,
+    ArrayTipoRegistrador: arrTipoRegistrador,
+    ArrayDeRegistrador: arrRegistrador,
+    setQuantidadeInstrucoes: setQuantidadeInstrucoes,
+    ArrayDeEstacaoReserva: arrEstacaoReserva,
     setConfirmado,
     setCicloAtual,
-    arrBufferReordenamento,
+    ArrayDeReordenamentoDeBuffer: arrBufferReordenamento,
   } = useContext(IntrucaoContext);
 
   const onCliqueConfirmar = () => {
@@ -32,7 +32,7 @@ const BotoesConfimarResetar: React.FC = () => {
           i.nome === TipoInstrucao.Mult ||
           i.nome === TipoInstrucao.Ld ||
           i.nome === TipoInstrucao.Ld) &&
-        (!i.entrada1 || !i.entrada2 || !i.entrada3)
+        (!i.input1 || !i.input2 || !i.input3)
       ) {
         ehValido = false;
       }
@@ -47,8 +47,8 @@ const BotoesConfimarResetar: React.FC = () => {
       ...arrInstrucoes.value.map((i) => {
         i.enviada = false;
         i.escrita = false;
-        i.executada = false;
-        i.commited = false;
+        i.resultado = false;
+        i.commitada = false;
         return i;
       }),
     ]);
@@ -61,14 +61,14 @@ const BotoesConfimarResetar: React.FC = () => {
       ...arrEstacaoReserva.value.map((er) => {
         er.A = undefined;
         er.Ciclos = undefined;
-        er.ocupada = false;
+        er.busy = false;
         er.operacao = undefined;
         er.registradorSendoUtilizado = undefined;
-        er.Vj = undefined;
-        er.Vk = undefined;
+        er.VJ = undefined;
+        er.VK = undefined;
         er.destino = undefined;
-        er.Qj = undefined;
-        er.Qk = undefined;
+        er.QJ = undefined;
+        er.QK = undefined;
         er.idInstrucao = undefined;
         return er;
       }),
@@ -105,11 +105,11 @@ const BotoesConfimarResetar: React.FC = () => {
     );
     const instrucaoDefault = arrInstrucoes.value[0];
     instrucaoDefault.nome = "Add";
-    instrucaoDefault.entrada1 = "";
-    instrucaoDefault.entrada2 = "";
-    instrucaoDefault.entrada3 = undefined;
+    instrucaoDefault.input1 = "";
+    instrucaoDefault.input2 = "";
+    instrucaoDefault.input3 = undefined;
     instrucaoDefault.enviada = false;
-    instrucaoDefault.executada = false;
+    instrucaoDefault.resultado = false;
     instrucaoDefault.escrita = false;
     arrInstrucoes.setValue([...[instrucaoDefault]]);
     arrBufferReordenamento.setValue([]);

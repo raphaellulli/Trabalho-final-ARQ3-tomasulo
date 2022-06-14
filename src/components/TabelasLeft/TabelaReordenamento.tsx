@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { IInstrucoes, IntrucaoContext } from "../../App";
+import { PropsInstrucoes, IntrucaoContext } from "../../App";
 
 const TabelaReordenamento: React.FC = () => {
-  const { arrBufferReordenamento, arrInstrucoes } = useContext(IntrucaoContext);
+  const {
+    ArrayDeReordenamentoDeBuffer: arrBufferReordenamento,
+    ArrayDeInstrucoes: arrInstrucoes,
+  } = useContext(IntrucaoContext);
 
-  const getEstadoInstrucao = (intrucao: IInstrucoes) => {
-    if (intrucao.descartada) return "Descartada";
-    if (intrucao.commited) return "Commit";
+  const getEstadoInstrucao = (intrucao: PropsInstrucoes) => {
+    if (intrucao.lixo) return "Descartada";
+    if (intrucao.commitada) return "Commit";
     if (intrucao.escrita) return "Write back";
-    if (intrucao.executada) return "Executed";
+    if (intrucao.resultado) return "Executed";
     if (intrucao.enviada) return "Issue";
     return "????";
   };
@@ -41,31 +44,29 @@ const TabelaReordenamento: React.FC = () => {
 
                 return (
                   <tr>
-                    <Inferior parametro={instrucao.descartada}>
-                      {ind + 1}
+                    <Inferior parametro={instrucao.lixo}>{ind + 1}</Inferior>
+                    <Inferior parametro={instrucao.lixo}>
+                      {!instrucao.commitada && !instrucao.lixo ? "X" : ""}
                     </Inferior>
-                    <Inferior parametro={instrucao.descartada}>
-                      {!instrucao.commited && !instrucao.descartada ? "X" : ""}
-                    </Inferior>
-                    <Inferior parametro={instrucao.descartada}>
+                    <Inferior parametro={instrucao.lixo}>
                       {instrucao.nome +
-                        (!!instrucao.entrada1
-                          ? ", " + instrucao.entrada1.toUpperCase()
+                        (!!instrucao.input1
+                          ? ", " + instrucao.input1.toUpperCase()
                           : "") +
-                        (!!instrucao.entrada2
-                          ? ", " + instrucao.entrada2.toUpperCase()
+                        (!!instrucao.input2
+                          ? ", " + instrucao.input2.toUpperCase()
                           : "") +
-                        (!!instrucao.entrada3
-                          ? ", " + instrucao.entrada3?.toUpperCase()
+                        (!!instrucao.input3
+                          ? ", " + instrucao.input3?.toUpperCase()
                           : "")}
                     </Inferior>
-                    <Inferior parametro={instrucao.descartada}>
-                      {!buffer && !instrucao.descartada
+                    <Inferior parametro={instrucao.lixo}>
+                      {!buffer && !instrucao.lixo
                         ? ""
                         : getEstadoInstrucao(instrucao)}
                     </Inferior>
-                    <Inferior parametro={instrucao.descartada}>
-                      {instrucao.entrada1}
+                    <Inferior parametro={instrucao.lixo}>
+                      {instrucao.input1}
                     </Inferior>
                   </tr>
                 );
