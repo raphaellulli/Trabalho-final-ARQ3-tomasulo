@@ -4,7 +4,7 @@ import InstrucoesTotais from '../../components/TabelasRight/InstrucoesTotais';
 import CiclosPorInstrucao from '../../components/TabelasRight/CiclosPorInstrucao';
 import QuantidadeTipoRegistrador from '../../components/TabelasRight/QuantidadeTipoRegistrador';
 
-const RightScreen: React.FC = () => {
+const TelaDireita: React.FC = () => {
 
     return (
         <Wrapper>
@@ -21,7 +21,7 @@ const RightScreen: React.FC = () => {
     );
 }
 
-export default RightScreen;
+export default TelaDireita;
 
 const Wrapper = styled.div`
 	display: flex;

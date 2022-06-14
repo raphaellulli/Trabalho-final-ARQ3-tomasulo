@@ -4,7 +4,7 @@ import TabelaEstacaoReserva from '../../components/TabelasLeft/TabelaEstacaoRese
 import TabelaRegistradores from '../../components/TabelasLeft/TabelaRegistradores';
 import TabelaReordenamento from '../../components/TabelasLeft/TabelaReordenamento';
 
-const LeftScreen: React.FC = () => {
+const TelaEsquerda: React.FC = () => {
 
     return (
         <Wrapper>
@@ -17,7 +17,7 @@ const LeftScreen: React.FC = () => {
     );
 }
 
-export default LeftScreen;
+export default TelaEsquerda;
 
 const Wrapper = styled.div`
 	display: flex;

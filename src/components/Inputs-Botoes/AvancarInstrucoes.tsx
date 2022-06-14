@@ -4,6 +4,7 @@ import { IEstacaoReserva, IInstrucoes, IntrucaoContext, IRegistrador } from '../
 import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
 const AvancarInstrucoes: React.FC = () => {
+
     const arrInstrucoesConfirmadas = useRef<IInstrucoes[]>([]);
     const {
         arrRegistrador,
@@ -18,7 +19,6 @@ const AvancarInstrucoes: React.FC = () => {
     } = useContext(IntrucaoContext);
 
     const avancarInstrucoes = () => {
-
         const instrucaoAtual = arrInstrucoesConfirmadas.current.shift();
         let estacaoReservaVazia: IEstacaoReserva | undefined = undefined;
 
@@ -26,6 +26,7 @@ const AvancarInstrucoes: React.FC = () => {
             alert("Ciclos finalizados!");
             return;
         }
+
         const arrBufferAux = arrBufferReordenamento.value;
         setCicloAtual(cicloAtual + 1);
         const arrRegParaAtualizar: IRegistrador[] = [];
@@ -249,11 +250,9 @@ const AvancarInstrucoes: React.FC = () => {
             >
                 Avançar
             </button>
-            <div
-                className='ciclo'
-            >
+            <Ciclo>
                 CICLO - {cicloAtual}
-            </div>
+            </Ciclo>
         </Wrapper >
     );
 }
@@ -269,13 +268,6 @@ const Wrapper = styled.div`
     text-align: center;
     margin-left: 15px;
 
-    .ciclo {
-        display: flex;
-	    flex: 1;
-        font-family: impact;
-        font-size: 30px;
-        color: #dfdfdf;
-    }
     .myButton {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
         background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -301,4 +293,12 @@ const Wrapper = styled.div`
 	    position: relative;
 	    top: 1px;
     }
+`;
+
+const Ciclo = styled.div`
+    display: flex;
+    flex: 1;
+    font-family: impact;
+    font-size: 30px;
+    color: #dfdfdf;
 `;

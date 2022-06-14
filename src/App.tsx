@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useArray, UseArrayActions } from './hooks/useArray';
 import { TipoInstrucao } from './Enums/TipoInstrucao';
 import { TipoRegistrador } from './Enums/TipoRegistrador';
-import RightScreen from './screen/RightScreen/RightScreen';
-import LeftScreen from './screen/LeftScreen/LeftScreen';
+import TelaDireita from './screen/TelaDireita/TelaDireita';
+import TelaEsquerda from './screen/TelaEsquerda/TelaEsquerda';
 import BotoesConfimarResetar from './components/Inputs-Botoes/BotoesConfimarResetar';
 import InputInstrucoes from './components/Inputs-Botoes/InputInstrucoes';
 import AvancarInstrucoes from './components/Inputs-Botoes/AvancarInstrucoes';
@@ -76,6 +76,7 @@ export interface IIntrucaoContextProps {
 export const IntrucaoContext = React.createContext<IIntrucaoContextProps>({} as IIntrucaoContextProps);
 
 function App() {
+
 	const tamnhoBuffer = 6;
 	const [cicloAtual, setCicloAtual] = React.useState(0);
 	const [quantidadeInstrucoes, setQuantidadeInstrucoes] = useState<number>(1);
@@ -117,6 +118,11 @@ function App() {
 	return (
 		<IntrucaoContext.Provider value={defaultValue}>
 			<Wrapper>
+				<TituloWrapper>
+					<Titulo>
+						Simulador de Tomasulo
+					</Titulo>
+				</TituloWrapper>
 				<ParteTopo>
 					<BotoesConfimarResetar />
 					<Linha />
@@ -125,10 +131,10 @@ function App() {
 				</ParteTopo>
 				<ParteBaixo>
 					<ParteEsquerda>
-						<LeftScreen />
+						<TelaEsquerda />
 					</ParteEsquerda>
 					<ParteDireita>
-						<RightScreen />
+						<TelaDireita />
 					</ParteDireita>
 				</ParteBaixo>
 			</Wrapper>
@@ -143,6 +149,16 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	flex: 1;
 	height: 99vh;
+`;
+
+const TituloWrapper = styled.div`
+	padding: 10px;	
+`;
+
+const Titulo = styled.label`
+    font-family: impact;
+    font-size: 35px;
+    color: #777777;
 `;
 
 const ParteTopo = styled.div`

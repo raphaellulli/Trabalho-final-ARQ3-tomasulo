@@ -11,31 +11,25 @@ const InputInstrucoes: React.FC = () => {
 
     return (
         <Wrapper>
-            <div
-                className='qtd-instrucoes-wrapper'
-            >
-                <div className='qtd-instrucoes'>
+            <Container>
+                <Instrucoes>
                     <button
                         className='myButtonLeft'
                         onClick={() => { if (quantidadeInstrucoes === 1) return; setQuantidadeInstrucoes(quantidadeInstrucoes - 1); }}
                     >
                         -
                     </button>
-                    <label
-                        className='numeroInstrucoes'
-                    >
+                    <Label>
                         {quantidadeInstrucoes}
-                    </label>
+                    </Label>
                     <button
                         className='myButtonRight'
                         onClick={() => setQuantidadeInstrucoes(quantidadeInstrucoes + 1)}
                     >
                         +
                     </button>
-
-                </div>
-            </div>
-
+                </Instrucoes>
+            </Container>
         </Wrapper >
     );
 }
@@ -47,30 +41,7 @@ const Wrapper = styled.div`
     position: relative;
 	align-items: center;
     margin-left: 15px;
-    margin-right: 180px;
-
-    .qtd-instrucoes-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .qtd-instrucoes{
-            display: flex;
-            flex-direction: row;
-        }
-    }
-
-    .numeroInstrucoes{
-        display: flex;
-	    flex: 1;
-        font-family: impact;
-        font-size: 25px;
-        color: #dfdfdf;
-        padding: 0 15px 0 25px;
-        width: 25px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-    }
+    margin-right: 210px;
     
     .myButtonLeft {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -122,4 +93,28 @@ const Wrapper = styled.div`
 	    position: relative;
 	    top: 1px;
     }
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Instrucoes = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+const Label = styled.label`
+    display: flex;
+    flex: 1;
+    font-family: impact;
+    font-size: 25px;
+    color: #dfdfdf;
+    padding: 0 15px 0 25px;
+    width: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
 `;

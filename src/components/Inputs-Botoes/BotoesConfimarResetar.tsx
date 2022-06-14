@@ -96,7 +96,7 @@ const BotoesConfimarResetar: React.FC = () => {
 
     return (
         <Wrapper>
-            <div className='Wrapper-bottoes'>
+            <Container>
                 <div>
                     <button
                         className='myButton'
@@ -114,7 +114,7 @@ const BotoesConfimarResetar: React.FC = () => {
                         Resetar
                     </button>
                 </div>
-            </div>
+            </Container>
         </Wrapper >
     );
 }
@@ -125,13 +125,7 @@ const Wrapper = styled.div`
     display: flex;  
     align-items: center;
     margin-left: 20px;
-
-    .Wrapper-bottoes{
-        display: flex;
-        flex-direction: row;
-        margin-right: 15px;
-    }
-
+    
     .myButton {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
         background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -149,11 +143,17 @@ const Wrapper = styled.div`
         text-shadow: 0px 1px 0px #ffffff;
     }
     .myButton:hover{
-	    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+        background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 	    background-color: #dfdfdf;
     }
     .myButton:active{
-	    position: relative;
+        position: relative;
 	    top: 1px;
     }
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
 `;

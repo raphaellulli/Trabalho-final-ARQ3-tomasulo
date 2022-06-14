@@ -7,9 +7,8 @@ interface IProps {
     index: number;
 }
 
-const InputInstrucao: React.FC<IProps> = ({
-    index
-}) => {
+const InputInstrucao: React.FC<IProps> = ({ index }) => {
+
     const {
         arrInstrucoes,
         confirmado,
@@ -32,17 +31,10 @@ const InputInstrucao: React.FC<IProps> = ({
         arrInstrucoes.setValue([...newArray]);
     }
 
-    // function uuid(mask = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx') {
-    //     return `${mask}`.replace(/[xy]/g, function (c) {
-    //         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    //         return v.toString(16);
-    //     });
-    // }
-
     const onMount = () => {
         if (index >= arrInstrucoes.length)
             arrInstrucoes.push({
-                id: (index+1)+"",
+                id: (index + 1) + "",
                 nome: 'Add',
                 enviada: false,
                 executada: false,
@@ -64,44 +56,41 @@ const InputInstrucao: React.FC<IProps> = ({
 
     return (
         <Wrapper>
-            <label style={{ marginRight: '12px' }}>
+            <Instrucao>
                 Instrução - {index + 1}
-            </label>
-            <select
-                style={{ width: '75px', marginRight: '2px', padding: '4px' }}
+            </Instrucao>
+            <Select
                 value={arrInstrucoes.value[index]?.nome ?? TipoInstrucao.Add}
                 defaultValue={arrInstrucoes.value[index]?.nome ?? TipoInstrucao.Add}
                 onChange={(valor) => { AssociarInstrucao(valor.target.value, 4) }}
             >
-                {
-                    Object.keys(TipoInstrucao).map((i: any, ind: number) =>
-                        <option
-                            disabled={confirmado}
-                            key={"option-tipo-instrucao-" + ind}
-                            value={i}
-                        >
-                            <div>
-                                <label>
-                                    {i}
-                                </label>
-                            </div>
-                        </option>
-                    )
-                }
-            </select>
-            <input
+                {Object.keys(TipoInstrucao).map((i: any, ind: number) =>
+                    <option
+                        disabled={confirmado}
+                        key={"option-tipo-instrucao-" + ind}
+                        value={i}
+                    >
+                        <div>
+                            <label>
+                                {i}
+                            </label>
+                        </div>
+                    </option>
+                )}
+            </Select>
+            <Input
                 disabled={confirmado}
                 placeholder='Reg Destino'
                 value={arrInstrucoes.value[index]?.entrada1 ?? ''}
                 onChange={(e) => { AssociarInstrucao(e.target.value, 1) }}
             />
-            <input
+            <Input
                 disabled={confirmado}
                 placeholder='Reg Origem'
                 value={arrInstrucoes.value[index]?.entrada2 ?? ''}
                 onChange={(e) => { AssociarInstrucao(e.target.value, 2) }}
             />
-            <input
+            <Input
                 disabled={confirmado}
                 placeholder='Reg Origem'
                 value={arrInstrucoes.value[index]?.entrada3 ?? ''}
@@ -120,10 +109,23 @@ const Wrapper = styled.div`
 	justify-content: center;
     margin: 2px;
     width: 100%;
+`;
 
-    input{
-        width: 100px;
-        margin-right: 2px;
-        padding: 4px;
-    }
+const Instrucao = styled.label`
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 12px;
+`;
+
+const Select = styled.select`
+    width: 75px;
+    margin-right: 2px;
+    padding: 4px;
+`;
+
+const Input = styled.input`
+    width: 100px;
+    margin-right: 2px;
+    padding: 4px;
 `;

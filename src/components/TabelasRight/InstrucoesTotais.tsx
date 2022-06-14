@@ -12,7 +12,9 @@ const InstrucoesTotais: React.FC = () => {
     const GerarCampoInstrucoes = () => {
         const arrFragmentInstrucao: JSX.Element[] = [];
         for (let i = 0; i < quantidadeInstrucoes; i++)
-            arrFragmentInstrucao.push(<InputInstrucao key={`index-ionpt-instrucao-${i}`} index={i} />)
+            arrFragmentInstrucao.push(
+                <InputInstrucao key={`index-ionpt-instrucao-${i}`} index={i} />
+            )
         return arrFragmentInstrucao;
     }
 

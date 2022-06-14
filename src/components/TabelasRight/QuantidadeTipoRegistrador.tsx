@@ -4,6 +4,7 @@ import { IEstacaoReserva, IntrucaoContext } from '../../App';
 import { TipoRegistrador } from '../../Enums/TipoRegistrador';
 
 const QuantidadeTipoRegistrador: React.FC = () => {
+
     const {
         arrEstacaoReserva,
         arrTipoRegistrador,
@@ -33,7 +34,6 @@ const QuantidadeTipoRegistrador: React.FC = () => {
                 }
             })
         })
-
         arrEstacaoReserva.setValue([...arrAux]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,30 +41,28 @@ const QuantidadeTipoRegistrador: React.FC = () => {
 
     return (
         <Wrapper>
-            {
-                Object.keys(TipoRegistrador).map((i: any, ind: number) =>
-                    <Content key={'tipo-registrador-' + ind}>
-                        <Registrador>
-                            {i.toUpperCase()}
-                        </Registrador>
-                        <input
-                            value={arrTipoRegistrador.findByStringId(i, 'TipoRegistrador').quantidade}
-                            type="number"
-                            onChange={(e) => {
-                                if (Number(e.target.value) <= 0) return;
-                                arrTipoRegistrador.setValue([
-                                    ...arrTipoRegistrador.value.map(cpi => {
-                                        if (cpi.TipoRegistrador === i) {
-                                            cpi.quantidade = Number(e.target.value);
-                                        }
-                                        return cpi;
-                                    })
-                                ])
-                            }}
-                        />
-                    </Content>
-                )
-            }
+            {Object.keys(TipoRegistrador).map((i: any, ind: number) =>
+                <Content key={'tipo-registrador-' + ind}>
+                    <Registrador>
+                        {i.toUpperCase()}
+                    </Registrador>
+                    <input
+                        value={arrTipoRegistrador.findByStringId(i, 'TipoRegistrador').quantidade}
+                        type="number"
+                        onChange={(e) => {
+                            if (Number(e.target.value) <= 0) return;
+                            arrTipoRegistrador.setValue([
+                                ...arrTipoRegistrador.value.map(cpi => {
+                                    if (cpi.TipoRegistrador === i) {
+                                        cpi.quantidade = Number(e.target.value);
+                                    }
+                                    return cpi;
+                                })
+                            ])
+                        }}
+                    />
+                </Content>
+            )}
         </Wrapper>
     );
 }
@@ -87,5 +85,8 @@ const Content = styled.div`
 `;
 
 const Registrador = styled.label`
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
     width: 100px;
 `;

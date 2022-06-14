@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IInstrucoes, IntrucaoContext } from '../../App';
 
 const TabelaReordenamento: React.FC = () => {
+
     const {
         arrBufferReordenamento,
         arrInstrucoes,
@@ -23,18 +24,23 @@ const TabelaReordenamento: React.FC = () => {
     return (
         <Wrapper>
             <Tabela>
-                <thead>
-                    <tr>
-                        <Superior>Entrada</Superior>
-                        <Superior>Ocupado</Superior>
-                        <Superior>Instrução</Superior>
-                        <Superior>Estado</Superior>
-                        <Superior>Destino</Superior>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        (arrBufferReordenamento && arrBufferReordenamento.value && arrBufferReordenamento.value.length)
+                <div>
+                    <Titulo>
+                        Instruções
+                    </Titulo>
+                </div>
+                <div>
+                    <thead>
+                        <tr>
+                            <Superior>Entrada</Superior>
+                            <Superior>Ocupado</Superior>
+                            <Superior>Instrução</Superior>
+                            <Superior>Estado</Superior>
+                            <Superior>Destino</Superior>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {(arrBufferReordenamento && arrBufferReordenamento.value && arrBufferReordenamento.value.length)
                             ? arrBufferReordenamento.value.map((bufferRe, ind) => {
                                 const instrucao = arrInstrucoes.value.find(instrucao => instrucao.id === bufferRe.idInstrucao);
                                 if (!instrucao) return (
@@ -70,8 +76,9 @@ const TabelaReordenamento: React.FC = () => {
                                 <Inferior></Inferior>
                                 <Inferior></Inferior>
                             </tr>
-                    }
-                </tbody>
+                        }
+                    </tbody>
+                </div>
             </Tabela>
         </Wrapper >
     );
@@ -88,7 +95,15 @@ const Wrapper = styled.div`
 `;
 
 const Tabela = styled.table`
+    text-align: center;
 	border: 2px solid #777777;
+    padding: 5px;
+`;
+
+const Titulo = styled.label`
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
 `;
 
 const Superior = styled.th`
